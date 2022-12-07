@@ -1,0 +1,437 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="admin.master.cs" Inherits="admin_admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder></title>
+    <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="./assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+    
+</head>
+
+<body class="g-sidenav-show   bg-gray-100">
+  <div class="min-height-300 bg-primary position-absolute w-100"></div>
+  <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html " target="_blank">
+        <img src="data:image/jpeg;base64,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" class="navbar-brand-img h-100" alt="main_logo">
+        <span class="ms-1 font-weight-bold">
+                       <asp:Label class="" ID="Label1" runat="server" Text=""></asp:Label>
+
+        </span>
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="./dashboard.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link " href="./service-provider-list.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Service Provider</span>
+          </a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link " href="./user-list.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">User</span>
+          </a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link " href="./service-adm-list.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Service</span>
+          </a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link " href="./category-view.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Categories
+</span>
+          </a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link " href="./country-view.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+              <span class="nav-link-text ms-1">Country
+              </span>
+          </a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link " href="./state-view.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+              <span class="nav-link-text ms-1">State
+              </span>
+          </a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link " href="./district-view.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+              <span class="nav-link-text ms-1">District
+              </span>
+          </a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link " href="./city-view.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+              <span class="nav-link-text ms-1">City
+              </span>
+          </a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link " href="./locality-view.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+              <span class="nav-link-text ms-1">Locality
+              </span>
+          </a>
+        </li>
+                     <li class="nav-item">
+          <a class="nav-link " href="./complaine-list.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Complaine</span>
+          </a>
+        </li>
+               <li class="nav-item">
+          <a class="nav-link " href="./pincode-view.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+              <span class="nav-link-text ms-1">Pincode
+              </span>
+          </a>
+        </li>
+                     <li class="nav-item">
+          <a class="nav-link " href="./faq-view.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">FAQ</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="./profile-view.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Profile</span>
+          </a>
+        </li>
+                  <li class="nav-item">
+          <a class="nav-link " href="./profile-view.aspx">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">
+                <a href="../auth/sign-out.aspx">
+                    Sign Out
+                </a>
+</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="sidenav-footer mx-3 ">
+      <div class="card card-plain shadow-none" id="sidenavCard">
+        <img class="w-50 mx-auto" src="./assets/img/illustrations/icon-documentation.svg" alt="sidebar_illustration">
+        <div class="card-body text-center p-3 w-100 pt-0">
+          <div class="docs-info">
+            <p class="text-xs font-weight-bold mb-0">Please check our docs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <main class="main-content position-relative border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+        
+       <!--   <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Dashboard</li>
+          </ol>
+          <h6 class="font-weight-bolder text-white mb-0">Dashboard</h6> -->
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <div class="input-group">
+              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" placeholder="Type here...">
+            </div>
+          </div>
+          <ul class="navbar-nav  justify-content-end">
+            <li class="nav-item d-flex align-items-center">
+              <a href="../auth/sign-out.aspx" class="nav-link text-white font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none">Sign Out</span>
+              </a>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item px-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+            
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+   <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+  </main>
+  <div class="fixed-plugin">
+    <div class="card shadow-lg">
+      <div class="card-header pb-0 pt-3 ">
+        <div class="float-start">
+          <h5 class="mt-3 mb-0">Argon Configurator</h5>
+          <p>See our dashboard options.</p>
+        </div>
+        <div class="float-end mt-4">
+          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+            <i class="fa fa-close"></i>
+          </button>
+        </div>
+        <!-- End Toggle Button -->
+      </div>
+      <hr class="horizontal dark my-1">
+      <div class="card-body pt-sm-3 pt-0 overflow-auto">
+        <!-- Sidebar Backgrounds -->
+        <div>
+          <h6 class="mb-0">Sidebar Colors</h6>
+        </div>
+        <a href="javascript:void(0)" class="switch-trigger background-color">
+          <div class="badge-colors my-2 text-start">
+            <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
+          </div>
+        </a>
+        <!-- Sidenav Type -->
+        <div class="mt-3">
+          <h6 class="mb-0">Sidenav Type</h6>
+          <p class="text-sm">Choose between 2 different sidenav types.</p>
+        </div>
+        <div class="d-flex">
+          <button class="btn bg-gradient-primary w-100 px-3 mb-2 active me-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
+          <button class="btn bg-gradient-primary w-100 px-3 mb-2" data-class="bg-default" onclick="sidebarType(this)">Dark</button>
+        </div>
+        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+        <!-- Navbar Fixed -->
+        <div class="d-flex my-3">
+          <h6 class="mb-0">Navbar Fixed</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
+          </div>
+        </div>
+        <hr class="horizontal dark my-sm-4">
+        <div class="mt-2 mb-5 d-flex">
+          <h6 class="mb-0">Light / Dark</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+          </div>
+        </div>
+        <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/argon-dashboard">Free Download</a>
+        <a class="btn btn-outline-dark w-100" href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard">View documentation</a>
+        <div class="w-100 text-center">
+          <a class="github-button" href="https://github.com/creativetimofficial/argon-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/argon-dashboard on GitHub">Star</a>
+          <h6 class="mt-3">Thank you for sharing!</h6>
+          <a href="https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="./assets/js/core/popper.min.js"></script>
+  <script src="./assets/js/core/bootstrap.min.js"></script>
+  <script src="./assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="./assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="./assets/js/plugins/chartjs.min.js"></script>
+  <script>
+      var ctx1 = document.getElementById("chart-line").getContext("2d");
+
+      var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+
+      gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
+      gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
+      gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
+      new Chart(ctx1, {
+          type: "line",
+          data: {
+              labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+              datasets: [{
+                  label: "Mobile apps",
+                  tension: 0.4,
+                  borderWidth: 0,
+                  pointRadius: 0,
+                  borderColor: "#5e72e4",
+                  backgroundColor: gradientStroke1,
+                  borderWidth: 3,
+                  fill: true,
+                  data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                  maxBarThickness: 6
+
+              }],
+          },
+          options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                  legend: {
+                      display: false,
+                  }
+              },
+              interaction: {
+                  intersect: false,
+                  mode: 'index',
+              },
+              scales: {
+                  y: {
+                      grid: {
+                          drawBorder: false,
+                          display: true,
+                          drawOnChartArea: true,
+                          drawTicks: false,
+                          borderDash: [5, 5]
+                      },
+                      ticks: {
+                          display: true,
+                          padding: 10,
+                          color: '#fbfbfb',
+                          font: {
+                              size: 11,
+                              family: "Open Sans",
+                              style: 'normal',
+                              lineHeight: 2
+                          },
+                      }
+                  },
+                  x: {
+                      grid: {
+                          drawBorder: false,
+                          display: false,
+                          drawOnChartArea: false,
+                          drawTicks: false,
+                          borderDash: [5, 5]
+                      },
+                      ticks: {
+                          display: true,
+                          color: '#ccc',
+                          padding: 20,
+                          font: {
+                              size: 11,
+                              family: "Open Sans",
+                              style: 'normal',
+                              lineHeight: 2
+                          },
+                      }
+                  },
+              },
+          },
+      });
+  </script>
+  <script>
+      var win = navigator.platform.indexOf('Win') > -1;
+      if (win && document.querySelector('#sidenav-scrollbar')) {
+          var options = {
+              damping: '0.5'
+          }
+          Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+      }
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="./assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+            </form>
+       <!-- Form validation -->
+        <script>
+            (function () {
+                'use strict'
+                var forms = document.querySelectorAll('.needs-validation')
+                Array.prototype.slice.call(forms)
+                    .forEach(function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault()
+                                event.stopPropagation()
+                            }
+
+                            form.classList.add('was-validated')
+                        }, false)
+                    })
+            })()
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
